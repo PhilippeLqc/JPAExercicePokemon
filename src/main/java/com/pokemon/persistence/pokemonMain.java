@@ -16,7 +16,6 @@ import java.util.List;
 
 public class pokemonMain {
     public static void main(String[] args) {
-        EntityManager entityManager = Persistence.createEntityManagerFactory("com.pokemon.persistence").createEntityManager();
 
         AttackDao attackDao = new AttackDao();
         Attack thunderbolt = new Attack();
@@ -94,19 +93,20 @@ public class pokemonMain {
         arena3.setType("Electric");
         ArenaDao.saveArena(arena3);
 
+
         //thanks to the relationship between Pokemon, PokemonSpecies and Attack, we can access all the details of the pokemon using pokemonDao
-        Pokemon pikachu2 = pokemonDao.findById(1L);
-        System.out.println(pikachu2);
+        Pokemon pokemonById = pokemonDao.findById(1L);
+        System.out.println(pokemonById);
 
         // show all the pokemons in the database. Only shows the pokemon id and name of the species.
         List<Pokemon> pokemon = pokemonDao.findAll();
         System.out.println(pokemon);
 
         // show all pokemon based ascending order of their actualXp and level.
-        List<Pokemon> pokemon1 = pokemonDao.findAllOrderByLevelAndActualXp();
-        System.out.println(pokemon1);
+        List<Pokemon> pokemonByOrder = pokemonDao.findAllOrderByLevelAndActualXp();
+        System.out.println(pokemonByOrder);
 
-        // show all the arenas in the database with a
+        // show all the arenas in the database
         List<Arena> arena = ArenaDao.findAllArena();
         System.out.println(arena);
 

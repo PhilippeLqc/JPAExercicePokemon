@@ -15,10 +15,9 @@ public class ArenaDao {
         TypedQuery<Arena> query = entityManager.createQuery("SELECT a FROM Arena a", Arena.class);
         List<Arena> arenaList = query.getResultList();
 
-        for (Arena arena : arenaList) {
             System.out.println("LISTE DES ARENES ET LEUR TYPE");
-            System.out.println("NOM DE L'ARENE : " + arena.getName());
-            System.out.println("TYPE DE L'ARENE : " + arena.getType());
+        for (Arena arena : arenaList) {
+            System.out.println("NOM DE L'ARENE : " + arena.getName() + ", " + "TYPE DE L'ARENE : " + arena.getType());
             System.out.println("-------------------");
         }
 

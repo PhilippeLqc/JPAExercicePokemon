@@ -6,15 +6,6 @@ import jakarta.persistence.EntityManager;
 
 public class PokemonSpeciesDao {
 
-    public PokemonSpecies findPokemonSpeciesById(Long id) {
-        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
-
-        PokemonSpecies pokemonSpecies = entityManager.find(PokemonSpecies.class, id);
-
-        entityManager.close();
-        return pokemonSpecies;
-    }
-
     public void savePokemonSpecies(PokemonSpecies pokemonSpecies) {
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 

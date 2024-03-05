@@ -9,7 +9,6 @@ import java.util.List;
 
 public class PokemonDao {
 
-
     public List<Pokemon> findAll() {
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -17,10 +16,9 @@ public class PokemonDao {
         List<Pokemon> pokemonList = query.getResultList();
 
         //get name of the species and id of the pokemon
-        for (Pokemon pokemon : pokemonList) {
             System.out.println("LISTE DES POKEMONS");
-            System.out.println("NOM : " + pokemon.getSpecies().getName());
-            System.out.println("ID : " + pokemon.getId());
+        for (Pokemon pokemon : pokemonList) {
+            System.out.println("NOM : " + pokemon.getSpecies().getName() + " " + "ID : " + pokemon.getId());
             System.out.println("-------------------");
         }
         entityManager.close();
@@ -84,12 +82,9 @@ public class PokemonDao {
         TypedQuery<Pokemon> query = entityManager.createQuery("SELECT p FROM Pokemon p ORDER BY p.level DESC, p.actualXp DESC", Pokemon.class);
         List<Pokemon> pokemonList = query.getResultList();
 
-        for (Pokemon pokemon : pokemonList) {
             System.out.println("POKEMON PAR ORDRE DECROISSANT DE LEVEL ET XP");
-            System.out.println("ID: " + pokemon.getId());
-            System.out.println("Species: " + pokemon.getSpecies().getName());
-            System.out.println("Level: " + pokemon.getLevel());
-            System.out.println("Actual XP: " + pokemon.getActualXp());
+        for (Pokemon pokemon : pokemonList) {
+            System.out.println("ID: " + pokemon.getId() + ", " + "NOM: " + pokemon.getSpecies().getName() + ", " + "LEVEL: " + pokemon.getLevel() + ", " + "XP: " + pokemon.getActualXp());
             System.out.println("-----------------------------------");
         }
 
