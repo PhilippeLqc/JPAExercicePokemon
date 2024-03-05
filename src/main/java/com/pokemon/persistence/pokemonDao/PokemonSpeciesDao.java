@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 public class PokemonSpeciesDao {
 
     public void savePokemonSpecies(PokemonSpecies pokemonSpecies) {
+        // save the pokemon species in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
         entityManager.getTransaction().begin();

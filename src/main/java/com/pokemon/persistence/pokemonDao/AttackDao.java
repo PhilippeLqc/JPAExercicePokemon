@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 public class AttackDao {
 
     public void save(Attack attack) {
+        // save the attack in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
         entityManager.getTransaction().begin();

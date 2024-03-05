@@ -10,6 +10,7 @@ import java.util.List;
 public class ArenaDao {
 
     public List<Arena> findAllArena() {
+        // find all the arenas and their type and print them in the console
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
         TypedQuery<Arena> query = entityManager.createQuery("SELECT a FROM Arena a", Arena.class);
@@ -26,6 +27,7 @@ public class ArenaDao {
     }
 
     public void saveArena(Arena arena) {
+        // save the arena in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
         entityManager.getTransaction().begin();

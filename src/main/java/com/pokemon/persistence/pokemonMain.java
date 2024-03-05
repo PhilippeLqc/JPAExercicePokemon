@@ -102,7 +102,7 @@ public class pokemonMain {
         List<Pokemon> pokemon = pokemonDao.findAll();
         System.out.println(pokemon);
 
-        // show all pokemon based ascending order of their actualXp and level.
+        // show all pokemon based in ascending order of their actualXp and level.
         List<Pokemon> pokemonByOrder = pokemonDao.findAllOrderByLevelAndActualXp();
         System.out.println(pokemonByOrder);
 
