@@ -26,7 +26,7 @@ public class ArenaDao {
         return arenaList;
     }
 
-    public void saveArena(Arena arena) {
+    public static void saveArena(Arena arena) {
         // save the arena in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -35,6 +35,28 @@ public class ArenaDao {
         entityManager.getTransaction().commit();
 
         entityManager.close();
+    }
+
+    public static void deleteArena(String name) {
+        // delete the arena from the database
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+
+        entityManager.getTransaction().begin();
+        Arena arena = entityManager.find(Arena.class, name);
+        entityManager.remove(arena);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+    }
+
+    public static Arena findByName(String name) {
+        // find the arena by its name
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+
+        Arena arena = entityManager.find(Arena.class, name);
+
+        entityManager.close();
+        return arena;
     }
 
 }

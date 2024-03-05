@@ -8,6 +8,7 @@ public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "species_id")
     private PokemonSpecies species;
@@ -65,5 +66,13 @@ public class Pokemon {
 
     public void setTrainer(PokeTrainer trainer) {
         this.trainer = trainer;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

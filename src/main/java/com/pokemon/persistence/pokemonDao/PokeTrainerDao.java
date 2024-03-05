@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PokeTrainerDao {
 
-    public void savePokeTrainer(PokeTrainer pokeTrainer) {
+    public static void savePokeTrainer(PokeTrainer pokeTrainer) {
         // save the poke trainer in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -20,7 +20,7 @@ public class PokeTrainerDao {
         entityManager.close();
     }
 
-    public void update(PokeTrainer pokeTrainer) {
+    public static void update(PokeTrainer pokeTrainer) {
         // update the poke trainer in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -48,7 +48,7 @@ public class PokeTrainerDao {
         return pokeTrainerList;
     }
 
-public void deletePokeTrainer(Long id) {
+public static void deletePokeTrainer(Long id) {
         // delete the poke trainer in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
         PokeTrainer pokeTrainer = entityManager.find(PokeTrainer.class, id);
@@ -61,7 +61,7 @@ public void deletePokeTrainer(Long id) {
         entityManager.close();
     }
 
-    public PokeTrainer findPokeTrainerByName(String name) {
+    public static PokeTrainer findPokeTrainerByName(String name) {
         // find the poke trainer by its name and print its name, id, and age in the console
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
         TypedQuery<PokeTrainer> query = entityManager.createQuery("SELECT p FROM PokeTrainer p WHERE p.name = :name", PokeTrainer.class);

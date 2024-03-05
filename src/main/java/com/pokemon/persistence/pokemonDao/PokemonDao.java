@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PokemonDao {
 
-    public List<Pokemon> findAll() {
+    public static List<Pokemon> findAll() {
         // find all the pokemon in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -48,7 +48,18 @@ public class PokemonDao {
         return pokemon;
     }
 
-    public void save(Pokemon pokemon) {
+    public static Pokemon findByPokemonName(String name) {
+        // find the pokemon by its name and print its name, attack, type, power, level, actualHp, actualXp, baseHp in the console
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+        // get the pokemon by its name property name
+        TypedQuery<Pokemon> query = entityManager.createQuery("SELECT p FROM Pokemon p WHERE p.name = :name", Pokemon.class);
+        query.setParameter("name", name);
+        List<Pokemon> pokemonList = query.getResultList();
+        entityManager.close();
+        return pokemonList.get(0);
+    }
+
+    public static void savePokemon(Pokemon pokemon) {
         // save the pokemon in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -59,7 +70,7 @@ public class PokemonDao {
         entityManager.close();
     }
 
-    public void update(Pokemon pokemon) {
+    public static void PokemonUpdate(Pokemon pokemon) {
         // update the pokemon in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -70,7 +81,7 @@ public class PokemonDao {
         entityManager.close();
     }
 
-    public void delete(Pokemon pokemon) {
+    public static void deletePokemon(Pokemon pokemon) {
         // delete the pokemon from the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 

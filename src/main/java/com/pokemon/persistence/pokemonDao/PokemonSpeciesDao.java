@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 
 public class PokemonSpeciesDao {
 
-    public void savePokemonSpecies(PokemonSpecies pokemonSpecies) {
+    public static void savePokemonSpecies(PokemonSpecies pokemonSpecies) {
         // save the pokemon species in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -17,7 +17,7 @@ public class PokemonSpeciesDao {
         entityManager.close();
     }
 
-    public PokemonSpecies update(PokemonSpecies pokemonSpecies) {
+    public static PokemonSpecies update(PokemonSpecies pokemonSpecies) {
         // update the pokemon species in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -27,5 +27,29 @@ public class PokemonSpeciesDao {
 
         entityManager.close();
         return updatedPokemonSpecies;
+    }
+
+    public void delete(PokemonSpecies pokemonSpecies) {
+        // delete the pokemon species in the database
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+
+        entityManager.getTransaction().begin();
+        entityManager.remove(pokemonSpecies);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+    }
+
+    public static PokemonSpecies findByName(String name) {
+        // find the pokemon species by its name
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+
+        PokemonSpecies pokemonSpecies = entityManager.createQuery("SELECT p FROM PokemonSpecies p WHERE p.name = :name", PokemonSpecies.class)
+                .setParameter("name", name)
+                .getSingleResult();
+
+        entityManager.close();
+
+        return pokemonSpecies;
     }
 }
