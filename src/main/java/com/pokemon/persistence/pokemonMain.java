@@ -1,17 +1,14 @@
 package com.pokemon.persistence;
 
 
-import com.pokemon.persistence.model.Arena;
-import com.pokemon.persistence.model.Pokemon;
-import com.pokemon.persistence.model.PokemonSpecies;
-import com.pokemon.persistence.model.Attack;
+import com.pokemon.persistence.model.*;
 import com.pokemon.persistence.pokemonDao.ArenaDao;
 import com.pokemon.persistence.pokemonDao.AttackDao;
 import com.pokemon.persistence.pokemonDao.PokemonDao;
+import com.pokemon.persistence.pokemonDao.PokeTrainerDao;
 import com.pokemon.persistence.pokemonDao.PokemonSpeciesDao;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Persistence;
 
+import java.util.Collections;
 import java.util.List;
 
 public class pokemonMain {
@@ -91,6 +88,40 @@ public class pokemonMain {
         pokemonDao.save(blastoise1);
         //--------------------------------------------------------------------------------
 
+        //CREATE POKETRAINER
+        PokeTrainerDao pokeTrainerDao = new PokeTrainerDao();
+        PokeTrainer ash = new PokeTrainer();
+        ash.setName("Ash");
+        ash.setAge(10);
+        ash.setSexe(Sexe.MAN);
+        ash.setMoney(1000);
+        pokeTrainerDao.savePokeTrainer(ash);
+
+        PokeTrainer misty = new PokeTrainer();
+        misty.setName("Misty");
+        misty.setAge(10);
+        misty.setSexe(Sexe.WOMAN);
+        misty.setMoney(999);
+        pokeTrainerDao.savePokeTrainer(misty);
+
+        PokeTrainer brock = new PokeTrainer();
+        brock.setName("Brock");
+        brock.setAge(15);
+        brock.setSexe(Sexe.MAN);
+        brock.setMoney(123456);
+        pokeTrainerDao.savePokeTrainer(brock);
+
+        //--------------------------------------------------------------------------------
+
+        //UPDATE POKEMON with POKETRAINER
+        pikachu1.setTrainer(ash);
+        charizard1.setTrainer(brock);
+        blastoise1.setTrainer(misty);
+        pokemonDao.update(pikachu1);
+        pokemonDao.update(charizard1);
+        pokemonDao.update(blastoise1);
+        //--------------------------------------------------------------------------------
+
         // CREATE ARENA
         ArenaDao ArenaDao = new ArenaDao();
         Arena arena1 = new Arena();
@@ -109,7 +140,6 @@ public class pokemonMain {
         ArenaDao.saveArena(arena3);
         //--------------------------------------------------------------------------------
 
-
         //thanks to the relationship between Pokemon, PokemonSpecies and Attack, we can access all the details of the pokemon using pokemonDao
         Pokemon pokemonById = pokemonDao.findById(1L);
         System.out.println(pokemonById);
@@ -125,6 +155,19 @@ public class pokemonMain {
         // show all the arenas in the database
         List<Arena> arena = ArenaDao.findAllArena();
         System.out.println(arena);
+
+        // show all the poke trainer in the database and print their name in the console
+        List<PokeTrainer> pokeTrainer = pokeTrainerDao.findAllPokeTrainerByName();
+        System.out.println(pokeTrainer);
+
+        // show Poketrainer by name
+        PokeTrainer pokeTrainerByName = pokeTrainerDao.findPokeTrainerByName("Ash");
+        System.out.println(pokeTrainerByName);
+
+        // show PokeTrainer by portion of name
+        List<PokeTrainer> pokeTrainerByPortionOfName = Collections.singletonList(pokeTrainerDao.findPokeTrainerByNameLike("a"));
+        System.out.println(pokeTrainerByPortionOfName);
+
 
     }
 

@@ -8,11 +8,16 @@ public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "species_id")
     private PokemonSpecies species;
     private int level;
     private int actualHp;
     private int actualXp;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "trainer_id")
+    private PokeTrainer trainer;
 
     public Long getId() {
         return id;
@@ -52,5 +57,13 @@ public class Pokemon {
 
     public void setActualXp(int actualXp) {
         this.actualXp = actualXp;
+    }
+
+    public PokeTrainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(PokeTrainer trainer) {
+        this.trainer = trainer;
     }
 }
