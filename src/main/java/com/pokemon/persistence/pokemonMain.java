@@ -44,21 +44,27 @@ public class pokemonMain {
         PokemonSpeciesDao pokemonSpeciesDao = new PokemonSpeciesDao();
         PokemonSpecies pikachu = new PokemonSpecies();
         pikachu.setName("Pikachu");
-        pikachu.setAttack("Thunderbolt");
         pikachu.setBaseHp(40);
         pokemonSpeciesDao.savePokemonSpecies(pikachu);
 
         PokemonSpecies charizard = new PokemonSpecies();
         charizard.setName("Charizard");
-        charizard.setAttack("Fire Blast");
         charizard.setBaseHp(78);
         pokemonSpeciesDao.savePokemonSpecies(charizard);
 
         PokemonSpecies blastoise = new PokemonSpecies();
         blastoise.setName("Blastoise");
-        blastoise.setAttack("Water Gun");
         blastoise.setBaseHp(79);
         pokemonSpeciesDao.savePokemonSpecies(blastoise);
+        //--------------------------------------------------------------------------------
+
+        // UPDATE POKEMONSPECIES ATTACK
+        pikachu.setAttack(thunderbolt);
+        charizard.setAttack(fireBlast);
+        blastoise.setAttack(waterGun);
+        pokemonSpeciesDao.update(pikachu);
+        pokemonSpeciesDao.update(charizard);
+        pokemonSpeciesDao.update(blastoise);
         //--------------------------------------------------------------------------------
 
         // CREATE POKEMON

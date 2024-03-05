@@ -10,14 +10,14 @@ import java.util.List;
 public class PokemonDao {
 
     public List<Pokemon> findAll() {
-        // find all the pokemons in the database
+        // find all the pokemon in the database
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
         TypedQuery<Pokemon> query = entityManager.createQuery("SELECT p FROM Pokemon p", Pokemon.class);
         List<Pokemon> pokemonList = query.getResultList();
 
         //get name of the species and id of the pokemon and print them in the console
-            System.out.println("LISTE DES POKEMONS");
+            System.out.println("LISTE DES POKEMON");
         for (Pokemon pokemon : pokemonList) {
             System.out.println("NOM : " + pokemon.getSpecies().getName() + " " + "ID : " + pokemon.getId());
             System.out.println("-------------------");
@@ -82,7 +82,7 @@ public class PokemonDao {
     }
 
     public List<Pokemon> findAllOrderByLevelAndActualXp() {
-        // find all the pokemons in the database and print them in the console in ascending order of their actualXp and level
+        // find all the pokemon in the database and print them in the console in ascending order of their actualXp and level
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
         TypedQuery<Pokemon> query = entityManager.createQuery("SELECT p FROM Pokemon p ORDER BY p.level DESC, p.actualXp DESC", Pokemon.class);

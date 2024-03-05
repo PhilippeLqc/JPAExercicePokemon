@@ -1,9 +1,6 @@
 package com.pokemon.persistence.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Attack {
@@ -14,6 +11,7 @@ public class Attack {
     private String name;
     private String type;
     private int power;
+
 
     public Long getId() {
         return id;
@@ -46,4 +44,5 @@ public class Attack {
     public void setPower(int power) {
         this.power = power;
     }
+
 }

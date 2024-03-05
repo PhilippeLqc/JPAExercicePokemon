@@ -13,7 +13,8 @@ public class PokemonSpecies {
     private Long id;
     private String name;
     private int baseHp;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "attack_id")
     private Attack attack;
 
 
@@ -41,22 +42,26 @@ public class PokemonSpecies {
         this.baseHp = baseHp;
     }
 
-
     public Attack getAttack() {
         return attack;
     }
 
-    public void setAttack(String attackName) {
-        // Recherche de l'attaque dans la base de données par son nom
-        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
-        TypedQuery<Attack> query = entityManager.createQuery("SELECT a FROM Attack a WHERE a.name = :name", Attack.class);
-        query.setParameter("name", attackName);
-        List<Attack> attacks = query.getResultList();
-        if (!attacks.isEmpty()) {
-            this.attack = attacks.get(0);
-        } else {
-            System.out.println("Attack not found");
-        }
-        entityManager.close();
+    public void setAttack(Attack attack) {
+        this.attack = attack;
     }
+
+
+//    public void setAttack(String attackName) {
+        // Recherche de l'attaque dans la base de données par son nom
+  //      EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+ //       TypedQuery<Attack> query = entityManager.createQuery("SELECT a FROM Attack a WHERE a.name = :name", Attack.class);
+  //      query.setParameter("name", attackName);
+    //    List<Attack> attacks = query.getResultList();
+      //  if (!attacks.isEmpty()) {
+        //    this.attack = attacks.get(0);
+        //} else {
+        //    System.out.println("Attack not found");
+        //}
+        //entityManager.close();
+    //}
 }

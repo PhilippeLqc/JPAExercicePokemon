@@ -16,4 +16,16 @@ public class PokemonSpeciesDao {
 
         entityManager.close();
     }
+
+    public PokemonSpecies update(PokemonSpecies pokemonSpecies) {
+        // update the pokemon species in the database
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+
+        entityManager.getTransaction().begin();
+        PokemonSpecies updatedPokemonSpecies = entityManager.merge(pokemonSpecies);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        return updatedPokemonSpecies;
+    }
 }
