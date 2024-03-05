@@ -17,6 +17,9 @@ import java.util.List;
 public class pokemonMain {
     public static void main(String[] args) {
 
+        // CREATE ATTACK, POKEMON SPECIES, POKEMON, ARENA
+
+        // CREATE ATTACKS
         AttackDao attackDao = new AttackDao();
         Attack thunderbolt = new Attack();
         thunderbolt.setName("Thunderbolt");
@@ -35,7 +38,9 @@ public class pokemonMain {
         waterGun.setType("Water");
         waterGun.setPower(40);
         attackDao.save(waterGun);
+        //--------------------------------------------------------------------------------
 
+        // CREATE POKEMON SPECIES
         PokemonSpeciesDao pokemonSpeciesDao = new PokemonSpeciesDao();
         PokemonSpecies pikachu = new PokemonSpecies();
         pikachu.setName("Pikachu");
@@ -54,7 +59,9 @@ public class pokemonMain {
         blastoise.setAttack("Water Gun");
         blastoise.setBaseHp(79);
         pokemonSpeciesDao.savePokemonSpecies(blastoise);
+        //--------------------------------------------------------------------------------
 
+        // CREATE POKEMON
         PokemonDao pokemonDao = new PokemonDao();
         Pokemon pikachu1 = new Pokemon();
         pikachu1.setSpecies(pikachu);
@@ -76,7 +83,9 @@ public class pokemonMain {
         blastoise1.setActualHp(79);
         blastoise1.setActualXp(500);
         pokemonDao.save(blastoise1);
+        //--------------------------------------------------------------------------------
 
+        // CREATE ARENA
         ArenaDao ArenaDao = new ArenaDao();
         Arena arena1 = new Arena();
         arena1.setName("Pallet Town");
@@ -92,6 +101,7 @@ public class pokemonMain {
         arena3.setName("Vermilion City");
         arena3.setType("Electric");
         ArenaDao.saveArena(arena3);
+        //--------------------------------------------------------------------------------
 
 
         //thanks to the relationship between Pokemon, PokemonSpecies and Attack, we can access all the details of the pokemon using pokemonDao
