@@ -1,8 +1,5 @@
 package com.pokemon.persistence.Utilitaires;
 
-import java.util.Scanner;
-
-
 public class UtilitairesBase {
 
     public static void displayMenu() {
@@ -15,5 +12,4 @@ public class UtilitairesBase {
         System.out.println("0 - Quitter");
 
     }
-
 }

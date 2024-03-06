@@ -52,4 +52,15 @@ public class PokemonSpeciesDao {
 
         return pokemonSpecies;
     }
+
+    public static void findAllPokemonSpecies() {
+        // find all the pokemon species in the database and print them in the console
+        EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
+
+        entityManager.createQuery("SELECT p FROM PokemonSpecies p", PokemonSpecies.class)
+                .getResultList()
+                .forEach(pokemonSpecies -> System.out.println("NOM DE L'ESPECE : " + pokemonSpecies.getName() + ", " + "NOMBRE DE POINTS DE VIE DE BASE : " + pokemonSpecies.getBaseHp()));
+
+        entityManager.close();
+    }
 }

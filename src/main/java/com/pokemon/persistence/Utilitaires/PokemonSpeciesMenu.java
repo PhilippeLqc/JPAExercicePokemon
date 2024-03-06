@@ -29,6 +29,9 @@ public class PokemonSpeciesMenu {
                 case 2:
                     updatePokemonSpecies(sc);
                     break;
+                case 3:
+                    PokemonSpeciesDao.findAllPokemonSpecies();
+                    break;
                 case 0:
                     isRunningPokemonSpecies = false;
                     break;
@@ -37,6 +40,7 @@ public class PokemonSpeciesMenu {
             }
         }
     }
+
     // create a new pokemon species
     public static void createPokemonSpecies(Scanner sc) {
         PokemonSpecies pokemon = new PokemonSpecies();
