@@ -13,6 +13,7 @@ public class PokemonSpeciesMenu {
         System.out.println("Choisissez une option : ");
         System.out.println("1 - Ajouter une espèce de pokémon");
         System.out.println("2 - Rattacher une attaque à une espèce de pokémon");
+        System.out.println("3 - Afficher les espèces de pokémon");
         System.out.println("0 - Quitter");
     }
 

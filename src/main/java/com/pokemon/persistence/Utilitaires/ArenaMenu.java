@@ -10,6 +10,8 @@ public class ArenaMenu {
         System.out.println("Choisissez une option : ");
         System.out.println("1 - Ajouter une arène");
         System.out.println("2 - Supprimer une arène");
+        System.out.println("3 - Afficher la liste des arènes");
+        System.out.println("0 - Quitter");
     }
 
     public static void handleArenaManagement(Scanner sc) {
@@ -23,6 +25,9 @@ public class ArenaMenu {
                     break;
                 case 2:
                     deleteArena(sc);
+                    break;
+                case 3:
+                    ArenaDao.findAllArena();
                     break;
                 case 0:
                     isRunningArena = false;

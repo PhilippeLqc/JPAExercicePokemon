@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ArenaDao {
 
-    public List<Arena> findAllArena() {
+    public static List<Arena> findAllArena() {
         // find all the arenas and their type and print them in the console
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 

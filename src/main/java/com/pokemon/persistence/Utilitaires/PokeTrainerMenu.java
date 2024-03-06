@@ -59,13 +59,12 @@ public class PokeTrainerMenu {
     }
 
     public static void addPokemonToPokeTrainer(Scanner sc) {
-        Pokemon pokemon = new Pokemon();
         System.out.println("Entrez le nom du dresseur : ");
         String name = sc.next();
         PokeTrainer trainer = PokeTrainerDao.findPokeTrainerByName(name);
         System.out.println("Entrez le nom du pokémon à rattacher : ");
         String pokemonName = sc.next();
-        pokemon = PokemonDao.findByPokemonName(pokemonName);
+        Pokemon pokemon = PokemonDao.findByPokemonName(pokemonName);
         pokemon.setTrainer(trainer);
         PokemonDao.PokemonUpdate(pokemon);
     }

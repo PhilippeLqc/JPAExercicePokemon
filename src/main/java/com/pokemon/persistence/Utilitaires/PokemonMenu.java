@@ -13,6 +13,9 @@ public class PokemonMenu {
         System.out.println("1 - Ajouter un pokémon");
         System.out.println("2 - Modifier un pokémon");
         System.out.println("3 - Supprimer un pokémon");
+        System.out.println("4 - Afficher la liste des pokémons");
+        System.out.println("5 - Afficher les pokémons par ordre décroissant de niveau et xp");
+        System.out.println("6 - Afficher le pokémon par son id");
         System.out.println("0 - Quitter");
     }
 
@@ -30,6 +33,17 @@ public class PokemonMenu {
                     break;
                 case 3:
                     deletePokemon(sc);
+                    break;
+                case 4:
+                    PokemonDao.findAll();
+                    break;
+                case 5:
+                    PokemonDao.findAllOrderByLevelAndActualXp();
+                    break;
+                case 6:
+                    System.out.println("Entrez l'id du pokémon : ");
+                    Long id = sc.nextLong();
+                    PokemonDao.findById(id);
                     break;
                 case 0:
                     isRunningPokemon = false;

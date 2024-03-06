@@ -19,7 +19,7 @@ public class PokemonDao {
         //get name of the species and id of the pokemon and print them in the console
             System.out.println("LISTE DES POKEMON");
         for (Pokemon pokemon : pokemonList) {
-            System.out.println("NOM : " + pokemon.getSpecies().getName() + " " + "ID : " + pokemon.getId());
+            System.out.println("NOM : " + pokemon.getName() + " " + "ESPECE : " + pokemon.getSpecies().getName() + " " + "ID : " + pokemon.getId());
             System.out.println("-------------------");
         }
         entityManager.close();
@@ -27,7 +27,7 @@ public class PokemonDao {
     }
 
 
-    public Pokemon findById(Long id) {
+    public static Pokemon findById(Long id) {
         // find the pokemon by its id and print its name, attack, type, power, level, actualHp, actualXp, baseHp in the console
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -92,7 +92,7 @@ public class PokemonDao {
         entityManager.close();
     }
 
-    public List<Pokemon> findAllOrderByLevelAndActualXp() {
+    public static List<Pokemon> findAllOrderByLevelAndActualXp() {
         // find all the pokemon in the database and print them in the console in ascending order of their actualXp and level
         EntityManager entityManager = PersistenceFactory.INSTANCE.getEntityManager();
 
@@ -101,7 +101,7 @@ public class PokemonDao {
 
             System.out.println("POKEMON PAR ORDRE DECROISSANT DE LEVEL ET XP");
         for (Pokemon pokemon : pokemonList) {
-            System.out.println("ID: " + pokemon.getId() + ", " + "NOM: " + pokemon.getSpecies().getName() + ", " + "LEVEL: " + pokemon.getLevel() + ", " + "XP: " + pokemon.getActualXp());
+            System.out.println("ID: " + pokemon.getId() + ", " + "NOM: " + pokemon.getName() + ", " +  "ESPECE: " + pokemon.getSpecies().getName() + ", " + "LEVEL: " + pokemon.getLevel() + ", " + "XP: " + pokemon.getActualXp());
             System.out.println("-----------------------------------");
         }
 
